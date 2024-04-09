@@ -1,12 +1,8 @@
-import DemoComponent from "./DemoComponent";
-
+import React from 'react';
+import Signup from './layouts/signup';
 
 function App() {
-  return (
-    <div>
-   <DemoComponent />
-    </div>
-  );
+	return <Signup />;
 }
 
 export default App;
