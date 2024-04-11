@@ -2,10 +2,12 @@ import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Header";
+import defaultImages from "../images/defaults";
 
-const UploadImage = ({ handleTabChange }) => {
+const UploadImage = () => {
 	const [avatar, setAvatar] = useState(null);
 	const [location, setLocation] = useState("");
+	const [defaultOpen, setDefaultOpen] = useState(false);
 	const containerRef = useRef(null);
 
 	const handleAvatarChange = (event) => {
@@ -19,14 +21,14 @@ const UploadImage = ({ handleTabChange }) => {
 
 	const handleKeyDown = (event) => {
 		if (event.key === "Enter" && avatar && location) {
-			handleTabChange("next");
+			window.location.href = "/select-type";
 		}
 	};
 
 	return (
 		<div ref={containerRef} onKeyDown={handleKeyDown} tabIndex="0">
-			<Header handleTabChange={handleTabChange} />
-			<div className="flex justify-center items-center px-12">
+			<Header href="/user-details" />
+			<div className="flex justify-center items-center px-12 mt-8">
 				<div>
 					<h1 className="text-3xl font-bold mb-4">
 						Welcome! Let's create your profile
@@ -48,7 +50,7 @@ const UploadImage = ({ handleTabChange }) => {
 							onClick={() =>
 								document.getElementById("avatar-upload").click()
 							}
-							className="w-40 h-40 rounded-full border-[3px] border-dashed border-gray-300 flex items-center justify-center cursor-pointer mb-2 relative"
+							className="w-40 h-40 rounded-full transition-all border-[3px] border-dashed border-gray-300 hover:border-pink-300 flex items-center justify-center cursor-pointer mb-2 relative"
 						>
 							{avatar ? (
 								<img
@@ -85,13 +87,28 @@ const UploadImage = ({ handleTabChange }) => {
 							>
 								{avatar ? "Remove image" : "Choose image"}
 							</button>
-							<button className="text-gray-400 text-sm font-semibold text-left mt-2">
+							<button onClick={() => setDefaultOpen(!defaultOpen)} className="text-gray-400 text-sm font-semibold text-left mt-2">
 								<FontAwesomeIcon
 									icon={faChevronRight}
-									className="mr-2"
+									className={"mr-2 transition-all" + (defaultOpen ? " transform rotate-90" : "")}
 								/>
 								Or choose one of our defaults
 							</button>
+							<div className={"flex gap-2 mt-3 transition-all" + (defaultOpen ? " opacity-100" : " opacity-0")}>
+								{defaultImages.map((img, index) => (
+									<button
+										key={index}
+										onClick={() => setAvatar(img)}
+										className="w-12 h-12 rounded-full overflow-hidden"
+									>
+										<img
+											src={img}
+											alt="Default avatar"
+											className="w-full h-full object-cover"
+										/>
+									</button>
+								))}
+							</div>
 						</div>
 					</div>
 					<p className="font-extrabold text-lg mt-12 mb-4">
@@ -106,7 +123,7 @@ const UploadImage = ({ handleTabChange }) => {
 					/>
 					<div className="mt-12 w-2/5">
 						<button
-							onClick={() => handleTabChange("next")}
+							onClick={() => window.location.href = "/select-type"}
 							type="button"
 							disabled={!avatar || !location}
 							className="w-full bg-pink-500 text-white rounded-md px-4 py-2 hover:bg-pink-600 transition-colors duration-300 disabled:bg-pink-300 disabled:cursor-not-allowed"

@@ -4,7 +4,7 @@ import designerImg from "../images/select-type/designer.svg";
 import hiringImg from "../images/select-type/hiring.svg";
 import inspirationImg from "../images/select-type/inspiration.svg";
 
-const SelectType = ({ handleTabChange }) => {
+const SelectType = () => {
 	const containerRef = useRef(null);
 	const [CheckedArray, setCheckedArray] = useState([]);
 
@@ -17,8 +17,8 @@ const SelectType = ({ handleTabChange }) => {
 	};
 
 	const handleKeyDown = (event) => {
-		if (event.key === "Enter") {
-			handleTabChange("next");
+		if (event.key === "Enter" && CheckedArray.length) {
+			window.location.href = "/verification";
 		}
 	};
 
@@ -48,8 +48,8 @@ const SelectType = ({ handleTabChange }) => {
 
 	return (
 		<div ref={containerRef} onKeyDown={handleKeyDown} tabIndex="0">
-			<Header handleTabChange={handleTabChange} />
-			<div className="flex flex-col w-full items-center justify-center">
+			<Header href="/upload-image" />
+			<div className="flex flex-col w-full items-center justify-center mt-8 px-8">
 				<h1 className="text-3xl font-bold mb-4">
 					What brings you to Dribbble?
 				</h1>
@@ -129,7 +129,7 @@ const SelectType = ({ handleTabChange }) => {
 				<button
 					disabled={!CheckedArray.length}
 					className="mt-4 bg-pink-500 disabled:bg-pink-300 hover:bg-pink-600 text-white px-20 py-2 rounded-lg transition-all"
-					onClick={() => handleTabChange("next")}
+					onClick={() => window.location.href = "/verification"}
 				>
 					Finish
 				</button>

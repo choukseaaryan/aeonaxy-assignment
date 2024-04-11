@@ -1,12 +1,12 @@
 import React from "react";
 import loginImg from "../images/user-details/login_img.png";
-import dribbbleLogo from "../images/user-details/dribbble_logo.svg";
+import DribbbleLogo from "./DribbbleLogo";
 
 const ImageComponent = () => {
 	return (
 		<div className="hidden lg:block bg-[#f5d38d] min-h-[100svh] w-[900px]">
 			<div className="p-12 pb-5">
-				<img className="w-[100px]" src={dribbbleLogo} alt="dribbble" />
+				<DribbbleLogo color={"#A8843A"} width="120" height="30" />
 				<h1 className="text-3xl text-[#856115] font-bold pt-8">
 					Discover the world's top
 					<br />

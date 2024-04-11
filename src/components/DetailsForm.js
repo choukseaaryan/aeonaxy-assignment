@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 
-const DetailsForm = ({ handleTabChange }) => {
+const DetailsForm = () => {
 	const [errors, setErrors] = useState({});
 	const [formValues, setFormValues] = useState({});
 
@@ -58,7 +58,8 @@ const DetailsForm = ({ handleTabChange }) => {
 			setErrors(newErrors);
 		} else {
 			setErrors({});
-			handleTabChange("next");
+			sessionStorage.setItem("email", formValues.email);
+			window.location.href = "/upload-image";
 		}
 	};
 
