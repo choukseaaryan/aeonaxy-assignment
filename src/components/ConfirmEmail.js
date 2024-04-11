@@ -30,7 +30,7 @@ const ConfirmEmail = () => {
 				Dribbble.
 			</p>
 			<p className=" my-4 text-center">
-				Didn't receive the email? Check yout Spam folder, it may have
+				Didn't receive the email? Check your Spam folder, it may have
 				been caught by a filter. If
 				<br />
 				you still don't see it, you can{" "}
