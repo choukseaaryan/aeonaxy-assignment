@@ -54,7 +54,7 @@ const SelectType = () => {
 					What brings you to Dribbble?
 				</h1>
 				<p className="text-sm text-gray-500">
-					Select the options that best describer you. Don't worry, you
+					Select the options that best describes you. Don't worry, you
 					can explore other options later.
 				</p>
 
