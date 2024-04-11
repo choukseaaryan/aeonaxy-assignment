@@ -3,7 +3,6 @@ import DribbbleLogo from "./DribbbleLogo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faDribbble,
-	faFacebook,
 	faInstagram,
 	faPinterest,
 	faSquareFacebook,

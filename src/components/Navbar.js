@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import DribbbleLogo from "./DribbbleLogo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-	faBars,
 	faBriefcase,
 	faCircleXmark,
 	faMagnifyingGlass,
